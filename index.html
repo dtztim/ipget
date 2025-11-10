@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>dtztim/ipget</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    </head>
+    <body>
+        <h1>dtztim/ipget</h1>
+        <p>This tool is entierly using <a href="https://ipify.org">Ipify.org API</a> to get the user IPs.</p>
+        <hr>
+        <h2>Results</h2>
+        <p>IPv4: <strong class="IPv4Field" style="color: orange;">Fetching...</strong></p>
+        <p>IPv6: <strong class="IPv6Field" style="color: orange;">Fetching...</strong></p>
+        <button class="refetchAction">Refetch</button>
+        <hr>
+        <p>Webtool made by <a href="https://github.com/dtztim">dtztim</a> | <a href="https://github.com/dtztim/ipget">Repository on Github</a></p>
+    </body>
+    <script>
+        function fetchIps() {
+            document.querySelector('.IPv4Field').textContent = 'Fetching...';
+            document.querySelector('.IPv4Field').style.color = 'orange';
+            document.querySelector('.IPv6Field').textContent = 'Fetching...';
+            document.querySelector('.IPv6Field').style.color = 'orange';
+            
+            fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('.IPv4Field').textContent = data.ip;
+                document.querySelector('.IPv4Field').style.color = 'green';
+            })
+            
+            fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('.IPv6Field').textContent = data.ip
+                document.querySelector('.IPv6Field').style.color = 'green';
+            }) 
+        }
+        
+        document.addEventListener('DOMContentLoaded', fetchIps)
+        
+        document.querySelector('.refetchAction').addEventListener('click', fetchIps)
+        
+    </script>
+</html>
