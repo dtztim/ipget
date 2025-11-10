@@ -3,7 +3,7 @@ A cookies-less, spy-less way to get your IPv4 and IPv6 addresses using Ipify.org
 
 ## Usage
 
-Go on the web page at [dtztim.github.io/ipget].
+Go on the web page at [dtztim.github.io/ipget](https://dtztim.github.io/ipget).
 
 This tool will send a request to ipify.org API for IPv4 <br>
 and IPv6 addresses in one go so no need to wait. 
